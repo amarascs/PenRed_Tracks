@@ -35,6 +35,7 @@
 #  Source 1
 #########################
 
+# Also change nhists for track tally below
 sources/generic/source1/nhist 500 
 sources/generic/source1/kpar "electron"
 
@@ -58,7 +59,7 @@ sources/generic/source1/direction/alpha 180.0
 sources/generic/source1/energy/type "MONOENERGETIC"
 
 # Set energy
-sources/generic/source1/energy/energy 2.e3
+sources/generic/source1/energy/energy 10.e3
 
 # Spatial sampling
 #########################
@@ -78,24 +79,6 @@ sources/generic/source1/spatial/position/z 0.0
 tallies/track/type "TRACK"
 tallies/track/nhists 500 
 tallies/track/WValue 13.5 
-tallies/track/PortionIntoIons 0.6 
-tallies/track/PortionOffset -30 
-
-#tallies/SpatialDoseDistrib/type "SPATIAL_DOSE_DISTRIB"
-#tallies/SpatialDoseDistrib/type "PSS"
-#tallies/SpatialDoseDistrib/PSS-source-mats 1
-#tallies/SpatialDoseDistrib/PSS-tally "SPATIAL_DOSE_DISTRIB"
-#tallies/SpatialDoseDistrib/PSS-particle "electron"
-#tallies/SpatialDoseDistrib/print-xyz true 
-#tallies/SpatialDoseDistrib/xmin -0.00005
-#tallies/SpatialDoseDistrib/xmax 0.00005
-#tallies/SpatialDoseDistrib/nx 50
-#tallies/SpatialDoseDistrib/ymin -0.00005
-#tallies/SpatialDoseDistrib/ymax 0.00005
-#tallies/SpatialDoseDistrib/ny 50
-#tallies/SpatialDoseDistrib/zmin -0.00005
-#tallies/SpatialDoseDistrib/zmax 0.00005
-#tallies/SpatialDoseDistrib/nz 50
 
 #########################
 #  GEOMETRY PARAMETERS  #
