@@ -16,8 +16,8 @@
 
 ### Post-processing
 7. Get NERSC python: `module load python`
-8. Process data to generate all ion positions and write to a new file: `python generate_ions.py track-th0-tracking.dat whatever_name.dat`
-9. The generate file `whatever_name.dat` should be usable
+8. Process data to generate all ion positions and write to a new file: `python generate_ions.py <pen_output>.dat <processed_file>.dat`
+9. The generated file `processed_file.dat` should be usable
 
 ## Notes
 
