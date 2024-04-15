@@ -46,6 +46,10 @@ inline const char* baseStateHeaderNoGeo(){
   return "     E(eV)        X(cm)        Y(cm)        Z(cm)         U            V            W           WGHT          PAGE       ILBs";
 }
 
+inline const char* baseStateHeaderOnlyXYZ(){
+  return "     E(eV)        X(cm)        Y(cm)        Z(cm)         ILBs";
+}
+
 struct pen_particleState{
 
 protected:
@@ -139,6 +143,28 @@ pen_particleState(const pen_particleState& c){
 	    E,X,Y,Z,
 	    U,V,W,
 	    WGHT,IBODY,MAT,PAGE,
+	    ILB[0],ILB[1],ILB[2],ILB[3],ILB[4]);
+
+    return std::string(text);
+  }
+
+  inline std::string stringifyBaseTrunc() const {
+
+    char text[300];
+    sprintf(text,"%12.4E %12.4E %12.4E %12.4E "
+	    "  %d %d %d %d %d",
+	    E,X,Y,Z,
+	    ILB[0],ILB[1],ILB[2],ILB[3],ILB[4]);
+
+    return std::string(text);
+  }
+
+  inline std::string stringifyBaseTruncIon() const {
+
+    char text[300];
+    sprintf(text,"%12.4E %12.4E %12.4E %12.4E "
+	    "  %d %d %d %d %d",
+	    -1.0,X,Y,Z,
 	    ILB[0],ILB[1],ILB[2],ILB[3],ILB[4]);
 
     return std::string(text);

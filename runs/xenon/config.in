@@ -35,7 +35,7 @@
 #  Source 1
 #########################
 
-sources/generic/source1/nhist 10000
+sources/generic/source1/nhist 500 
 sources/generic/source1/kpar "electron"
 
 # Directional sampling
@@ -43,7 +43,7 @@ sources/generic/source1/kpar "electron"
 
 sources/generic/source1/direction/type "CONE"
 
-# Set theta
+# Set theta0000
 sources/generic/source1/direction/theta 180.0
 
 # Set phi
@@ -58,7 +58,7 @@ sources/generic/source1/direction/alpha 180.0
 sources/generic/source1/energy/type "MONOENERGETIC"
 
 # Set energy
-sources/generic/source1/energy/energy 10.0e3
+sources/generic/source1/energy/energy 2.e3
 
 # Spatial sampling
 #########################
@@ -75,25 +75,27 @@ sources/generic/source1/spatial/position/z 0.0
 ##  TALLIES           ###
 #########################
 
-#tallies/track/type "TRACK"
-#tallies/track/nhists 25
-tallies/secondary/type "SECONDARY_GEN"
+tallies/track/type "TRACK"
+tallies/track/nhists 500 
+tallies/track/WValue 13.5 
+tallies/track/PortionIntoIons 0.6 
+tallies/track/PortionOffset -30 
 
-tallies/SpatialDoseDistrib/type "SPATIAL_DOSE_DISTRIB"
+#tallies/SpatialDoseDistrib/type "SPATIAL_DOSE_DISTRIB"
 #tallies/SpatialDoseDistrib/type "PSS"
 #tallies/SpatialDoseDistrib/PSS-source-mats 1
 #tallies/SpatialDoseDistrib/PSS-tally "SPATIAL_DOSE_DISTRIB"
 #tallies/SpatialDoseDistrib/PSS-particle "electron"
-tallies/SpatialDoseDistrib/print-xyz true 
-tallies/SpatialDoseDistrib/xmin -0.00005
-tallies/SpatialDoseDistrib/xmax 0.00005
-tallies/SpatialDoseDistrib/nx 50
-tallies/SpatialDoseDistrib/ymin -0.00005
-tallies/SpatialDoseDistrib/ymax 0.00005
-tallies/SpatialDoseDistrib/ny 50
-tallies/SpatialDoseDistrib/zmin -0.00005
-tallies/SpatialDoseDistrib/zmax 0.00005
-tallies/SpatialDoseDistrib/nz 50
+#tallies/SpatialDoseDistrib/print-xyz true 
+#tallies/SpatialDoseDistrib/xmin -0.00005
+#tallies/SpatialDoseDistrib/xmax 0.00005
+#tallies/SpatialDoseDistrib/nx 50
+#tallies/SpatialDoseDistrib/ymin -0.00005
+#tallies/SpatialDoseDistrib/ymax 0.00005
+#tallies/SpatialDoseDistrib/ny 50
+#tallies/SpatialDoseDistrib/zmin -0.00005
+#tallies/SpatialDoseDistrib/zmax 0.00005
+#tallies/SpatialDoseDistrib/nz 50
 
 #########################
 #  GEOMETRY PARAMETERS  #
@@ -116,8 +118,8 @@ materials/LiquidXenon/eabs/electron 5.0e1
 materials/LiquidXenon/eabs/positron 5.0e1
 materials/LiquidXenon/eabs/gamma 5.0e1
 
-materials/LiquidXenon/C1 0.05
-materials/LiquidXenon/C2 0.05
+materials/LiquidXenon/C1 0.01
+materials/LiquidXenon/C2 0.01
 
 materials/LiquidXenon/WCC 1.0e1 
 materials/LiquidXenon/WCR 1.0e1

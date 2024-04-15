@@ -45,12 +45,14 @@ public:
   pen_tallyTracking() : pen_genericTally( USE_BEGINSIM |
 					  USE_BEGINPART |
 					  USE_SAMPLEDPART |
-					  USE_MOVE2GEO |
+                      // USE_MOVE2GEO |
 					  USE_ENDPART |
-					  USE_STEP |
-					  USE_INTERFCROSS |
-					  USE_JUMP |
-					  USE_KNOCK),
+                      USE_STEP |
+                      USE_LOCALEDEP |
+// USE_INTERFCROSS |
+// USE_JUMP |
+                        USE_KNOCK
+                      ),
 			fout(nullptr),
 			nhists(0),
 			active(true)
@@ -67,12 +69,6 @@ public:
 			 const unsigned /*kdet*/,
 			 const pen_KPAR kpar,
 			 const pen_particleState& state); 
-  void tally_move2geo(const unsigned long long /*nhist*/,
-		      const unsigned /*kdet*/,
-		      const pen_KPAR /*kpar*/,
-		      const pen_particleState& state,
-		      const double /*dsef*/,
-		      const double /*dstot*/);  
   void tally_endPart(const unsigned long long /*nhist*/,
 		     const pen_KPAR /*kpar*/,
 		     const pen_particleState& state);  
@@ -80,20 +76,14 @@ public:
 		  const pen_KPAR /*kpar*/,
 		  const pen_particleState& state,
 		  const tally_StepData& stepData);
-  
-  void tally_interfCross(const unsigned long long /*nhist*/,
-			 const unsigned /*kdet*/,
-		       const pen_KPAR /*kpar*/,
-		       const pen_particleState& /*state*/);
-  void tally_jump(const unsigned long long /*nhist*/,
-		const pen_KPAR /*kpar*/,
-		const pen_particleState& state,
-		const double ds);
   void tally_knock(const unsigned long long /*nhist*/,
 		 const pen_KPAR /*kpar*/,
 		 const pen_particleState& state,
 		 const int icol);
-  
+  void tally_localEdep(const unsigned long long /*nhist*/,
+         const pen_KPAR kpar,
+         const pen_particleState& state,
+         const double dE);
   int configure(const wrapper_geometry& /*geometry*/,
 		const abc_material* const /*materials*/[constants::MAXMAT],
 		const pen_parserSection& config,

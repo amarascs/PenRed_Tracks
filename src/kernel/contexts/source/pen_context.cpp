@@ -76,7 +76,10 @@ int pen_context::init(double EMAX, FILE *IWR, int INFO, std::string PMFILE[const
     {
       pen_material& mat = getBaseMaterial(M);
       
-      if(mat.EABS[PEN_ELECTRON] < 49.999)
+      // Chami
+      double abs_min = 49.999;
+      if(mat.EABS[PEN_ELECTRON] < abs_min)
+      //if(mat.EABS[PEN_ELECTRON] < 49.999)
 	{
 	  if (IWR != nullptr) fprintf(IWR , "\nMaterial %3d, EABS(%d,%2d) = %11.4E eV\n *** ERROR: electron absorption energy cannot be less than %.5E eV\n",
 		  PEN_ELECTRON,M, M, mat.EABS[PEN_ELECTRON], double(constants::MINEABSE));
@@ -84,7 +87,7 @@ int pen_context::init(double EMAX, FILE *IWR, int INFO, std::string PMFILE[const
 	  return ERR_PEINIT_ELECTRON_ENERGY;
 	}
       EABS0[PEN_ELECTRON][M] = mat.EABS[PEN_ELECTRON];
-      if(mat.EABS[PEN_PHOTON] < 49.999)
+      if(mat.EABS[PEN_PHOTON] < abs_min)
 	{
 	  if (IWR != nullptr) fprintf(IWR , "\nMaterial %3d, EABS(%d,%2d) = %11.4E eV\n *** ERROR: photon absorption energy cannot be less than %.5E eV\n",
 		  PEN_PHOTON,M, M, mat.EABS[PEN_PHOTON], double(constants::MINEABSPh));
@@ -92,7 +95,7 @@ int pen_context::init(double EMAX, FILE *IWR, int INFO, std::string PMFILE[const
 	  return ERR_PEINIT_GAMMA_ENERGY;
 	}
       EABS0[PEN_PHOTON][M] = mat.EABS[PEN_PHOTON]; 
-      if(mat.EABS[PEN_POSITRON] < 49.999)
+      if(mat.EABS[PEN_POSITRON] < abs_min)
 	{
 	  if (IWR != nullptr) fprintf(IWR , "\nMaterial %3d, EABS(%d,%2d) = %11.4E eV\n *** ERROR: positron absorption energy cannot be less than %.5E eV\n",
 		  PEN_POSITRON,M, M, mat.EABS[PEN_POSITRON], double(constants::MINEABSPo));
@@ -1164,8 +1167,8 @@ void RELAX(const pen_elementDataBase& elements,
 	      storeState.ILB[0] = state.ILB[0]+1;
 	      storeState.ILB[1] = KPARS;
 	      storeState.ILB[2] = ICOL;
-        storeState.ILB[3] = IZ*1000000+ISA*10000+JS1*100+JS2;
-	      storeState.ILB[4] = state.ILB[4];
+          storeState.ILB[3] = IZ*1000000+ISA*10000+JS1*100+JS2;
+          storeState.ILB[4] = state.ILB[4];
 
 	      storeState.LAGE = state.LAGE;
 	      storeState.PAGE = state.PAGE;
