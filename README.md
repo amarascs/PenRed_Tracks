@@ -17,13 +17,14 @@
 ### Post-processing
 7. Get NERSC python: `module load python`
 8. Process data to generate all ion positions and write to a new file: `python generate_ions.py track-th0-tracking.dat whatever_name.dat`
+9. The generate file `whatever_name.dat` should be usable
 
 ## Notes
 
 ### What was modified?
 
-Nothing in the PenRed simulation was changed, but a new tally was activate to keep track of energy deposit and absorption locations. 
+Nothing in the PenRed simulation was changed, but a new tally was activated to keep track of energy deposit and absorption locations. 
 This is the `tally/track` seen in the config file. 
 
-PenRed does not explicitly keep track of ionization locations in the simulations, so they are estimated using the energy deposits.
-The `generate_ions.py` reads the simulation output and places ions where energy was deposited, assuming energy only goes into creating secondary electrons and ions. 
+PenRed does not explicitly keep track of ionization sites in the simulations, so they are estimated using the energy deposits.
+The `generate_ions.py` script reads the simulation output and places ions where energy was deposited, assuming energy only goes into creating secondary electrons and ions. 
