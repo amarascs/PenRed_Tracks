@@ -33,8 +33,6 @@
 
 
 double w_value;
-double portion_into_ions;
-double portion_offset;
 
 void pen_tallyTracking::flush(){
 }
@@ -170,22 +168,6 @@ int pen_tallyTracking::configure(const wrapper_geometry& /*geometry*/,
   if (err != INTDATA_SUCCESS){
     if(verbose > 0){
       printf("Tracking:configure:unable to read 'WValue' in configuration. Float expected");
-    }
-    return -1;
-  }
-
-  err = config.read("PortionIntoIons", portion_into_ions);
-  if (err != INTDATA_SUCCESS){
-    if(verbose > 0){
-      printf("Tracking:configure:unable to read 'PortionIntoIons' in configuration. Float expected");
-    }
-    return -1;
-  }
-
-  err = config.read("PortionOffset", portion_offset);
-  if (err != INTDATA_SUCCESS){
-    if(verbose > 0){
-      printf("Tracking:configure:unable to read 'PortionOffset' in configuration. Float expected");
     }
     return -1;
   }
