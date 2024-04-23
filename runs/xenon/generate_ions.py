@@ -16,6 +16,7 @@ def parse_and_process_file(input_filename, output_filename):
     creation_energies = {}
     coordinates_by_gen = {}
     ions_by_absorption = {}
+    energy_array = []
 
     # Reading the input file
     with open(input_filename, 'r') as file:
@@ -28,6 +29,9 @@ def parse_and_process_file(input_filename, output_filename):
                 creation_energies[current_history] = {}
                 coordinates_by_gen[current_history] = {}
                 ions_by_absorption[current_history] = {}
+
+                next_line = next(file)
+                energy_array.append( next_line.split()[-1] )
                 
             elif '# Gen' in line:
                 
@@ -63,7 +67,7 @@ def parse_and_process_file(input_filename, output_filename):
     # Process energies and output data
     with open(output_filename, 'w') as output_file:
         for history_num, history in enumerate(deposited_energies):
-            output_file.write(f"\n# Begin history {history}:\n")
+            output_file.write(f"\n# Begin history {history} with energy {energy_array[history_num]} keV:\n")
             
             # Write the ions created by absorption
             output_file.write("# Ions created by absorption - copied from PenRed output\n")
