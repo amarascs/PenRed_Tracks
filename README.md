@@ -12,7 +12,7 @@
 
 ### Running
 5. Go into runs folder: `cd ../runs/xenon` 
-6. Run executable with provided config file: `./pen_main config.in`
+6. Run executable with one of the provided config files. For example: `./pen_main config_mono.in`
 
 ### Post-processing
 7. Get NERSC python: `module load python`
