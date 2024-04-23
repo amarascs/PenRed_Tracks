@@ -98,41 +98,6 @@ def parse_and_process_file(input_filename, output_filename):
                     for _ in range(num_ions):
                         output_file.write(f"{x}  {y}  {z}\n")
                         
-def extract_ion_positions(file_path):
-    
-    coordinate_pattern = re.compile(r"^(-?\d+\.\d+E[+-]\d+)\s+(-?\d+\.\d+E[+-]\d+)\s+(-?\d+\.\d+E[+-]\d+)$")
-    generation_pattern = re.compile(r"^## Gen (\d+)$")
-    
-    data = {}  
-    current_history = None  
-    current_generation = None  
-    adjust_generation = 0  
-
-    with open(file_path, 'r') as file:
-        for line in file:
-            line = line.strip()
-            if line.startswith('# Begin history'):
-                current_history = int(line.split()[3].strip(':'))
-                data[current_history] = {}  # Initialize a dictionary for this history
-                
-            elif line.startswith('# Ions created by'):
-                if 'absorption' in line:
-                    adjust_generation = 1
-                else:
-                    adjust_generation = 0
-                    
-            elif line.startswith('## Gen'):
-                gen = int(line.split()[-1])
-                current_generation = gen + adjust_generation
-                if current_generation not in data[current_history]:
-                    data[current_history][current_generation] = []  # Initialize list for this generation
-            elif coordinate_pattern.match(line):  # Ion positions
-                coords = tuple(map(float, coordinate_pattern.findall(line)[0]))
-                if current_generation is not None:
-                    data[current_history][current_generation].append(coords)
-
-    return data
-
 def main():
     pen_file = sys.argv[1]
     out_file = sys.argv[2]
