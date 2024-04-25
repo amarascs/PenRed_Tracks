@@ -67,7 +67,7 @@ def parse_and_process_file(input_filename, output_filename):
     # Process energies and output data
     with open(output_filename, 'w') as output_file:
         for history_num, history in enumerate(deposited_energies):
-            output_file.write(f"\n# Begin history {history} with energy {energy_array[history_num]} keV:\n")
+            output_file.write(f"\n# Begin history {history} with energy {energy_array[history_num]} eV:\n")
             
             # Write the ions created by absorption
             output_file.write("# Ions created by absorption - copied from PenRed output\n")
